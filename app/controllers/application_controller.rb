@@ -7,13 +7,11 @@ class ApplicationController < ActionController::API
     before_action :authorize
 
     def authorize
-        return if authenticate_token
-
-        respond_unauthorized('Access Denied')
+       current_user || respond_unauthorized("Access denied")
     end
 
     def current_user
-        authenticate_token
+         @current_user ||= authenticate_token
     end
 
 
@@ -26,7 +24,7 @@ class ApplicationController < ActionController::API
 
     def authenticate_token
         authenticate_with_http_token do |token, _options|
-          User.find_by(token: token)
+          User.where(token:).first
         end # <#User > || nil 
     end
 end

@@ -5,6 +5,7 @@ one:
   email: MyString
   phone: MyString
   password_digest: MyString
+  role: MyString
   token: 
 
 two:
@@ -12,4 +13,5 @@ two:
   email: MyString
   phone: MyString
   password_digest: MyString
+  role: MyString
   token: 

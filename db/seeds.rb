@@ -38,6 +38,21 @@ Property.create(
 
 p "create properties"
 
+p "Seeding Favorites Properties"
+
+10.times do
+    property = Property.new(user: User.all.sample,
+                    property: Property.all.sample
+                   )
+    if favorite.valid?
+        favorite.save
+    else
+        p favorite.errors.full_messages
+    end
+end
+
+puts "Completed"
+
 # properties =[
 #     { 
 #     operation_type: "sale",

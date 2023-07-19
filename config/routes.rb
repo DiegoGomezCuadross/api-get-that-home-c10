@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
-resources :properties
+#Favorites
+resources :favorites
+
+#Properties
+resources :properties do
+    resources :favorites, only: [:create, :destroy]
+end
 
 # Users
 resources :users, only: :create

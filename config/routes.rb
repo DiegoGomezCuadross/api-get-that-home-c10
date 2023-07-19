@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-get "/properties" => "properties#index"
+resources :properties
 
 #sessions
  post "/login" => "sessions#create"

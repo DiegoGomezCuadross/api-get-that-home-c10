@@ -4,7 +4,7 @@ Property.destroy_all
 p "create users"
 
 User.create(email: "test@mail.com", password: "123456", password_confirmation: "123456")
-User.create(email: "team2@mail.com", password: "qwerty", password_confirmation: "qwerty")
+User.create(email: "team2@mail.com", password: "qwerty", password_confirmation: "qwerty", role: "Landlord")
 
 Property.create(
   operation_type: 'Venta',
@@ -37,34 +37,3 @@ Property.create(
 )
 
 p "create properties"
-
-p "Seeding Favorites Properties"
-
-10.times do
-    property = Property.new(user: User.all.sample,
-                    property: Property.all.sample
-                   )
-    if favorite.valid?
-        favorite.save
-    else
-        p favorite.errors.full_messages
-    end
-end
-
-puts "Completed"
-
-# properties =[
-#     { 
-#     operation_type: "sale",
-#     address: "Miraflores, Lima",
-#     price: "2000",
-#     property_type: "Apartment",
-#     bedrooms: "4",
-#     bathrooms: "2",
-#     area: "180", 
-#     about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survivd not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
-#     }
-# ]
-# properties.each { |property| Property.create(property) }
-
-p "Seeding finished"

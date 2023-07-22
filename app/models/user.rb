@@ -13,7 +13,7 @@ class User < ApplicationRecord
   end
 
    def self.authenticate(email, password)
-    user = User.find_by(email:)
+    user = User.find_by(email: email)
     return false unless user&.authenticate(password)
 
     user.regenerate_token

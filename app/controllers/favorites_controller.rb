@@ -1,25 +1,25 @@
 class FavoritesController < ApplicationController
-  before_action :set_favorite, only: %i[ show edit update destroy ]
+  before_action :set_favorite, only: [:show, :edit, :update, :destroy]
 
-  # GET / Properties
+  # GET /properties
   def index
     @favorites = Favorite.all
   end
 
-  # GET / Properties/1
+  # GET /properties/1
   def show
   end
 
-  # GET / Properties/new
+  # GET /properties/new
   def new
-    @Favorite = Favorite.new
+    @favorite = Favorite.new
   end
 
-  # GET / Properties/1/edit
+  # GET /properties/1/edit
   def edit
   end
 
-  # POST / Properties
+  # POST /properties
   def create
     @property = Property.find(params[:property_id])
     @favorite = @property.favorites.build(user_id: current_user.id)
@@ -32,18 +32,19 @@ class FavoritesController < ApplicationController
     end
   end
 
-  # PATCH/PUT / Properties/1
+  # PATCH/PUT /properties/1
   def update
     if @favorite.update(favorite_params)
-      redirect_to @favorite, notice: "favorite was successfully updated."
+      redirect_to @favorite, notice: "Favorite was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
-  # DELETE / Properties/1
+  # DELETE /properties/1
   def destroy
     if @favorite.destroy
+      # Add any desired redirect or response here
     end
   end
 

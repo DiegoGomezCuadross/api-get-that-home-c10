@@ -8,12 +8,13 @@ class PropertiesController < ApplicationController
    # GET /products
   def index
     @properties = Property.all
-
+    @property = Property.new
     render json: @properties
   end
 
   # GET /products/1
   def show
+    authorize @property
     render json: @property
   end
 
@@ -51,6 +52,6 @@ class PropertiesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def property_params
-    params.permit(:operation_type, :address, :price, :montly_rent, :maintanance, :property_type, :bedrooms, :bathrooms, :area, :pets, :about, :photo, :user_id)
+    params.permit(:operation_type, :address, :price, :montly_rent, :maintanance, :property_type, :bedrooms, :bathrooms, :area, :pets, :about, :photo, :user_id, :active, :favorite, :contacted)
   end
 end

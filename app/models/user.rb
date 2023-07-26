@@ -2,7 +2,8 @@ class User < ApplicationRecord
   has_secure_password
   has_secure_token
 
-  has_many :properties, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :properties, through: :favorites, counter_cache: true, dependent: :destroy
 
    validates :email, uniqueness: true,
                     presence: true,

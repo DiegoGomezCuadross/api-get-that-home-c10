@@ -8,12 +8,13 @@ class PropertiesController < ApplicationController
    # GET /products
   def index
     @properties = Property.all
-
+    @property = Property.new
     render json: @properties
   end
 
   # GET /products/1
   def show
+    authorize @property
     render json: @property
   end
 
